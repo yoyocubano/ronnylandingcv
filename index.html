@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html class="dark" lang="es">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title id="page-title">Ronny Valdes Montes de Oca - Portfolio Profesional</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title id="page-title">Ronny Valdes Montes de Oca - CV Profesional</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Oswald:wght@200;400;500;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Oswald:wght@200;400;500;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -21,7 +25,6 @@
                             glow: "rgba(0, 229, 255, 0.5)",
                             dim: "rgba(0, 229, 255, 0.1)"
                         },
-                        steel: "#2d3748",
                         text: {
                             main: "#E5E7EB",
                             muted: "#9CA3AF"
@@ -30,9 +33,6 @@
                     fontFamily: {
                         sans: ['Chakra Petch', 'sans-serif'],
                         display: ['Oswald', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                     }
                 },
             },
@@ -43,375 +43,362 @@
             background-color: #000000;
             color: #E5E7EB;
         }
+
         .neon-text {
             text-shadow: 0 0 10px rgba(0, 229, 255, 0.3), 0 0 20px rgba(0, 229, 255, 0.2);
         }
+
         .neon-border {
-            box-shadow: 0 0 5px rgba(0, 229, 255, 0.5), inset 0 0 5px rgba(0, 229, 255, 0.1);
+            box-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
         }
-        .hero-gradient {
-            background: linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.2) 100%);
-        }
+
         .card-hover:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(0, 229, 255, 0.15);
             border-color: #00E5FF;
         }
+
         .glass-panel {
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         .vignette {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+            box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9);
             pointer-events: none;
             z-index: 50;
         }
+
+        .blur-img {
+            filter: blur(8px) brightness(0.7) contrast(1.1);
+            transition: filter 0.5s ease;
+        }
+
+        .blur-img:hover {
+            filter: blur(4px) brightness(0.8);
+        }
     </style>
 </head>
+
 <body class="bg-black text-text-main font-sans antialiased selection:bg-cyan selection:text-black overflow-x-hidden">
     <div class="vignette"></div>
-    
+
     <nav class="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <span class="material-symbols-outlined text-cyan animate-pulse">ac_unit</span>
-                <span class="font-display font-bold text-xl tracking-widest text-white">VALDES<span class="text-cyan">.TECH</span></span>
+                <span class="font-display font-bold text-xl tracking-widest text-white uppercase">Ronny<span
+                        class="text-cyan">Valdes</span></span>
             </div>
-            <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
-                <a class="text-gray-400 hover:text-cyan transition-colors" href="#profile" data-lang-es="PERFIL" data-lang-en="PROFILE">PERFIL</a>
-                <a class="text-gray-400 hover:text-cyan transition-colors" href="#experience" data-lang-es="EXPERIENCIA" data-lang-en="EXPERIENCE">EXPERIENCIA</a>
-                <a class="text-gray-400 hover:text-cyan transition-colors" href="#skills" data-lang-es="HABILIDADES" data-lang-en="SKILLS">HABILIDADES</a>
-                <a id="nav-contact" class="px-4 py-1 border border-cyan/50 text-cyan rounded hover:bg-cyan hover:text-black transition-all duration-300 neon-border" href="#contact" data-lang-es="CONTACTO" data-lang-en="CONTACT">CONTACTO</a>
+            <div class="flex items-center gap-6">
+                <!-- Manual Language Selector -->
+                <div class="flex bg-surface border border-white/10 rounded overflow-hidden">
+                    <button onclick="setLanguage('es')" id="btn-es"
+                        class="px-3 py-1 text-xs font-bold transition-colors bg-cyan text-black">ES</button>
+                    <button onclick="setLanguage('en')" id="btn-en"
+                        class="px-3 py-1 text-xs font-bold transition-colors text-white hover:bg-white/5">EN</button>
+                </div>
+                <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
+                    <a class="text-gray-400 hover:text-cyan transition-colors" href="#profile" data-es="PERFIL"
+                        data-en="PROFILE">PERFIL</a>
+                    <a class="text-gray-400 hover:text-cyan transition-colors" href="#experience" data-es="EXPERIENCIA"
+                        data-en="EXPERIENCE">EXPERIENCIA</a>
+                    <a class="text-gray-400 hover:text-cyan transition-colors" href="#skills" data-es="COMPETENCIAS"
+                        data-en="COMPETENCIES">COMPETENCIAS</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <header class="relative min-h-[80vh] flex items-center pt-20 overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <!-- Using the Action Image for background context -->
-            <img alt="Industrial HVAC Background" src="./ronny_action.png" class="w-full h-full object-cover opacity-20"/>
-            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            <img alt="Industrial Background" src="./ronny_action.png" class="w-full h-full object-cover blur-img" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
         </div>
         <div class="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/20 text-cyan text-xs font-bold tracking-[0.2em] uppercase mb-4">
-                    <span class="w-2 h-2 rounded-full bg-cyan animate-pulse shadow-[0_0_10px_#00E5FF]"></span>
-                    <span data-lang-es="Técnico de Élite" data-lang-en="Elite Technician">Técnico de Élite</span>
-                </div>
-                <h1 class="font-display text-6xl md:text-8xl font-bold uppercase leading-none tracking-tighter text-white">
-                    Ronny<br/>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-blue-600 neon-text">Valdes</span>
+                <h1
+                    class="font-display text-5xl md:text-7xl font-bold uppercase leading-none tracking-tighter text-white">
+                    RONNY VALDES<br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-blue-600 neon-text"
+                        data-es="MONTES DE OCA" data-en="MONTES DE OCA">MONTES DE OCA</span>
                 </h1>
-                <h2 class="text-xl md:text-2xl text-gray-400 font-light tracking-wide border-l-2 border-cyan pl-4" data-lang-es="Especialista en Sistemas HVAC y Tuberías Industriales" data-lang-en="HVAC Systems & Industrial Pipefitting Specialist">
-                    Especialista en Sistemas HVAC y Tuberías Industriales
+                <h2 class="text-xl md:text-2xl text-cyan font-light tracking-wide border-l-2 border-cyan pl-4 uppercase"
+                    data-es="Técnico Superior / Encargado en Sistemas HVAC, Refrigeración y Tuberías Industriales"
+                    data-en="Senior Technician / HVAC, Refrigeration & Industrial Piping Supervisor">
+                    Técnico Superior / Encargado en Sistemas HVAC, Refrigeración y Tuberías Industriales
                 </h2>
-                <p class="text-gray-400 max-w-lg leading-relaxed" data-lang-es="Más de 20 años de ingeniería de precisión en control de clima comercial, industrial y residencial. Experto en diagnósticos VRF y montaje industrial a gran escala." data-lang-en="Over 20 years of precision engineering in commercial, industrial, and residential climate control. Expert in high-pressure systems, VRF diagnostics, and large-scale industrial assembly.">
-                    Más de 20 años de ingeniería de precisión en control de clima comercial, industrial y residencial. Experto en diagnósticos VRF y montaje industrial a gran escala.
-                </p>
                 <div class="flex flex-wrap gap-4 pt-4">
-                    <a class="group relative px-8 py-3 bg-cyan text-black font-bold tracking-wider uppercase overflow-hidden" href="#contact" data-lang-es="CONTRATAR EXPERTO" data-lang-en="HIRE EXPERT">
-                        <span class="absolute inset-0 w-full h-full bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-                        CONTRATAR EXPERTO
-                    </a>
-                    <a class="px-8 py-3 border border-white/20 text-white font-bold tracking-wider uppercase hover:border-cyan hover:text-cyan transition-colors" href="#experience" data-lang-es="VER TRABAJOS" data-lang-en="VIEW SPECS">
-                        VER TRABAJOS
-                    </a>
+                    <a class="px-6 py-2 bg-cyan text-black font-bold tracking-wider uppercase text-sm" href="#contact"
+                        data-es="CONTACTAR" data-en="CONTACT">CONTACTAR</a>
+                    <a class="px-6 py-2 border border-white/20 text-white font-bold tracking-wider uppercase text-sm hover:border-cyan hover:text-cyan transition-colors"
+                        href="tel:+13465462415">+1 346 546 2415</a>
                 </div>
             </div>
-            <div class="relative h-[600px] hidden md:block">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/5 bg-gradient-radial from-cyan/5 to-transparent"></div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-cyan/20 animate-spin-slow" style="animation-duration: 20s;"></div>
-                <div class="absolute inset-0 flex items-end justify-center">
-                    <!-- Updated with the technical leader AI image -->
-                    <img alt="Ronny Valdes Portrait" src="./ronny_hero.png" class="h-full object-cover object-center filter contrast-125 brightness-90 drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]" style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);"/>
-                </div>
-                <div class="absolute bottom-20 -left-10 glass-panel p-4 border-l-4 border-cyan">
-                    <div class="text-3xl font-display font-bold text-white">20+</div>
-                    <div class="text-xs text-gray-400 uppercase tracking-widest" data-lang-es="Años Exp." data-lang-en="Years Exp.">Años Exp.</div>
-                </div>
-                <div class="absolute top-40 -right-4 glass-panel p-4 border-r-4 border-cyan text-right">
-                    <div class="text-3xl font-display font-bold text-white">36+</div>
-                    <div class="text-xs text-gray-400 uppercase tracking-widest" data-lang-es="Certificaciones" data-lang-en="Certifications">Certificaciones</div>
+            <div class="relative h-[500px] hidden md:block">
+                <div class="absolute inset-0 flex items-center justify-center opacity-60">
+                    <img alt="Portrait Placeholder" src="./ronny_hero.png" class="h-full object-contain blur-img"
+                        style="mask-image: linear-gradient(to bottom, black 70%, transparent 100%);" />
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="border-y border-white/10 bg-surface/50 backdrop-blur-sm relative z-20">
-        <div class="max-w-7xl mx-auto px-6 py-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center group">
-                    <span class="material-symbols-outlined text-4xl text-gray-600 group-hover:text-cyan transition-colors mb-2">engineering</span>
-                    <h3 class="text-white font-display uppercase tracking-widest text-sm" data-lang-es="Tubería Industrial" data-lang-en="Industrial Piping">Tubería Industrial</h3>
-                    <p class="text-xs text-gray-500" data-lang-es="Nivel Capataz" data-lang-en="Foreman Level">Nivel Capataz</p>
-                </div>
-                <div class="text-center group">
-                    <span class="material-symbols-outlined text-4xl text-gray-600 group-hover:text-cyan transition-colors mb-2">hvac</span>
-                    <h3 class="text-white font-display uppercase tracking-widest text-sm" data-lang-es="Sistemas HVAC" data-lang-en="HVAC Systems">Sistemas HVAC</h3>
-                    <p class="text-xs text-gray-500">VRF / Split / Duct-Free</p>
-                </div>
-                <div class="text-center group">
-                    <span class="material-symbols-outlined text-4xl text-gray-600 group-hover:text-cyan transition-colors mb-2">verified_user</span>
-                    <h3 class="text-white font-display uppercase tracking-widest text-sm">EPA 608</h3>
-                    <p class="text-xs text-gray-500" data-lang-es="Certificación Universal" data-lang-en="Universal Certification">Certificación Universal</p>
-                </div>
-                <div class="text-center group">
-                    <span class="material-symbols-outlined text-4xl text-gray-600 group-hover:text-cyan transition-colors mb-2">groups</span>
-                    <h3 class="text-white font-display uppercase tracking-widest text-sm" data-lang-es="Liderazgo" data-lang-en="Leadership">Liderazgo</h3>
-                    <p class="text-xs text-gray-500" data-lang-es="Supervisión de Equipos" data-lang-en="Crew Supervision">Supervisión de Equipos</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <main class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-3 gap-12 relative z-20" id="profile">
+    <main class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-3 gap-12 relative z-20">
+        <!-- Sidebar Info -->
         <aside class="space-y-8">
-            <div class="glass-panel p-6 relative overflow-hidden group">
-                <h3 class="font-display text-xl text-white mb-6 border-b border-white/10 pb-2" data-lang-es="CONTACTO" data-lang-en="COMMUNICATION">CONTACTO</h3>
-                <ul class="space-y-4">
-                    <li class="flex items-center gap-4">
-                        <span class="flex items-center justify-center w-8 h-8 rounded bg-surface border border-white/10 text-cyan">
-                            <span class="material-symbols-outlined text-sm">call</span>
-                        </span>
-                        <a class="text-gray-300 hover:text-cyan transition-colors text-sm tracking-wide" href="tel:+13465462415">+1 346 546 2415</a>
+            <div class="glass-panel p-6">
+                <h3 class="font-display text-xl text-white mb-6 border-b border-cyan/30 pb-2" data-es="CONTACTO"
+                    data-en="CONTACT">CONTACTO</h3>
+                <ul class="space-y-4 text-sm">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-cyan scale-75">mail</span>
+                        <a class="text-gray-300 hover:text-cyan"
+                            href="mailto:ronnyany83@gmail.com">ronnyany83@gmail.com</a>
                     </li>
-                    <li class="flex items-center gap-4">
-                        <span class="flex items-center justify-center w-8 h-8 rounded bg-surface border border-white/10 text-cyan">
-                            <span class="material-symbols-outlined text-sm">mail</span>
-                        </span>
-                        <a class="text-gray-300 hover:text-cyan transition-colors text-sm tracking-wide break-all" href="mailto:ronnyany83@gmail.com">ronnyany83@gmail.com</a>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-cyan scale-75">call</span>
+                        <a class="text-gray-300 hover:text-cyan" href="tel:+13465462415">+1 346 546 2415</a>
                     </li>
-                    <li class="flex items-center gap-4">
-                        <span class="flex items-center justify-center w-8 h-8 rounded bg-surface border border-white/10 text-cyan">
-                            <span class="material-symbols-outlined text-sm">location_on</span>
-                        </span>
-                        <div class="text-sm">
-                            <span class="block text-gray-300">Fort Myers, Florida (USA)</span>
-                            <span class="text-xs text-green-400 font-mono mt-1 block" data-lang-es=">> Listos para traslado: España" data-lang-en=">> Relocation Ready: Spain">>> Listos para traslado: España</span>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-cyan scale-75">location_on</span>
+                        <div class="text-gray-300">
+                            Fort Myers, Florida (EE. UU.)
+                            <span class="block text-green-400 text-xs mt-1 font-bold"
+                                data-es="Disponible para traslado a España con familia"
+                                data-en="Relocation to Spain ready with family">Disponible para traslado a España con
+                                familia</span>
                         </div>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-cyan scale-75">badge</span>
+                        <span class="text-gray-300" data-es="Permis B" data-en="Driver License B">Permis B</span>
                     </li>
                 </ul>
             </div>
-            
-            <div class="glass-panel p-6 relative" id="skills">
-                <h3 class="font-display text-xl text-white mb-6 border-b border-white/10 pb-2" data-lang-es="ESPECIFICACIONES TÉCNICAS" data-lang-en="TECHNICAL SPECS">ESPECIFICACIONES TÉCNICAS</h3>
-                <div class="space-y-4">
-                    <div class="group">
-                        <div class="flex justify-between text-xs uppercase tracking-wider mb-1 text-gray-400">
-                            <span data-lang-es="Instalación & Manto. HVAC" data-lang-en="HVAC Install & Maint.">Instalación & Manto. HVAC</span>
-                            <span class="text-cyan">98%</span>
-                        </div>
-                        <div class="h-1 bg-gray-800 w-full overflow-hidden">
-                            <div class="h-full bg-cyan w-[98%] shadow-[0_0_10px_#00E5FF]"></div>
-                        </div>
-                    </div>
-                    <div class="group">
-                        <div class="flex justify-between text-xs uppercase tracking-wider mb-1 text-gray-400">
-                            <span data-lang-es="Soldadura Industrial" data-lang-en="Industrial Welding">Soldadura Industrial</span>
-                            <span class="text-cyan">95%</span>
-                        </div>
-                        <div class="h-1 bg-gray-800 w-full overflow-hidden">
-                            <div class="h-full bg-cyan w-[95%]"></div>
-                        </div>
-                    </div>
-                    <div class="group">
-                        <div class="flex justify-between text-xs uppercase tracking-wider mb-1 text-gray-400">
-                            <span data-lang-es="Planos & Esquemas" data-lang-en="Blueprints & Schematics">Planos & Esquemas</span>
-                            <span class="text-cyan">90%</span>
-                        </div>
-                        <div class="h-1 bg-gray-800 w-full overflow-hidden">
-                            <div class="h-full bg-cyan w-[90%]"></div>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-gray-400 space-y-2 mt-6 font-mono pl-2 border-l border-gray-800">
-                        <li data-lang-es="> Cumple con OSHA / ASHRAE / ISO" data-lang-en="> OSHA / ASHRAE / ISO Compliant">> Cumple con OSHA / ASHRAE / ISO</li>
-                        <li data-lang-es="> Supervisión y Gestión de Equipos" data-lang-en="> Team Supervision & Management">> Supervisión y Gestión de Equipos</li>
-                        <li data-lang-es="> Diagnóstico Avanzado" data-lang-en="> Advanced Diagnostics">> Diagnóstico Avanzado</li>
-                    </ul>
-                </div>
+
+            <div class="glass-panel p-6" id="skills">
+                <h3 class="font-display text-xl text-white mb-6 border-b border-cyan/30 pb-2"
+                    data-es="COMPETENCIAS TÉCNICAS" data-en="TECHNICAL COMPETENCIES">COMPETENCIAS TÉCNICAS</h3>
+                <ul class="space-y-4 text-xs tracking-wide text-gray-400 uppercase">
+                    <li class="border-l border-gray-800 pl-3 py-1 hover:border-cyan"
+                        data-es="Instalación y mantenimiento HVAC (Split, VRF, Duct-Free)"
+                        data-en="HVAC Installation & Maintenance (Split, VRF, Duct-Free)">Instalación y mantenimiento
+                        HVAC (Split, VRF, Duct-Free)</li>
+                    <li class="border-l border-gray-800 pl-3 py-1 hover:border-cyan"
+                        data-es="Montaje y soldadura de tuberías industriales"
+                        data-en="Industrial Pipe Assembly & Welding">Montaje y soldadura de tuberías industriales</li>
+                    <li class="border-l border-gray-800 pl-3 py-1 hover:border-cyan"
+                        data-es="Interpretación de planos isométricos y diagramas técnicos"
+                        data-en="Isometric Blueprints & Technical Diagrams Interpretation">Interpretación de planos
+                        isométricos y diagramas técnicos</li>
+                    <li class="border-l border-gray-800 pl-3 py-1 hover:border-cyan"
+                        data-es="Supervisión de obra y gestión de equipos" data-en="Site Supervision & Team Management">
+                        Supervisión de obra y gestión de equipos</li>
+                    <li class="border-l border-gray-800 pl-3 py-1 hover:border-cyan"
+                        data-es="Cumplimiento de normativas OSHA, ASHRAE e ISO" data-en="OSHA, ASHRAE & ISO Compliance">
+                        Cumplimiento de normativas OSHA, ASHRAE e ISO</li>
+                    <li class="border-l border-gray-800 pl-3 py-1 hover:border-cyan"
+                        data-es="Diagnóstico y reparación de sistemas de climatización"
+                        data-en="Diagnostics & Repair of Climate Control Systems">Diagnóstico y reparación de sistemas
+                        de climatización</li>
+                </ul>
             </div>
 
             <div class="glass-panel p-6">
-                <h3 class="font-display text-xl text-white mb-4 border-b border-white/10 pb-2" data-lang-es="IDIOMAS" data-lang-en="LANGUAGES">IDIOMAS</h3>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-black/50 p-3 text-center border border-white/5">
-                        <div class="text-cyan font-bold text-lg">ES</div>
-                        <div class="text-xs text-gray-500 uppercase" data-lang-es="Nativo" data-lang-en="Native">Nativo</div>
+                <h3 class="font-display text-xl text-white mb-4 border-b border-cyan/30 pb-2" data-es="IDIOMAS"
+                    data-en="LANGUAGES">IDIOMAS</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between text-xs">
+                        <span data-es="ESPAÑOL: Nativo" data-en="SPANISH: Native">ESPAÑOL: Nativo</span>
+                        <span class="text-cyan">100%</span>
                     </div>
-                    <div class="bg-black/50 p-3 text-center border border-white/5">
-                        <div class="text-cyan font-bold text-lg">EN</div>
-                        <div class="text-xs text-gray-500 uppercase" data-lang-es="Interactivo" data-lang-en="Tech Interm.">Interactivo</div>
+                    <div class="h-0.5 bg-gray-900 w-full">
+                        <div class="h-full bg-cyan w-full shadow-[0_0_5px_#00E5FF]"></div>
+                    </div>
+                    <div class="flex justify-between text-xs pt-1">
+                        <span data-es="INGLÉS: Intermedio Técnico" data-en="ENGLISH: Tech Intermediate">INGLÉS:
+                            Intermedio Técnico</span>
+                        <span class="text-cyan">65%</span>
+                    </div>
+                    <div class="h-0.5 bg-gray-900 w-full">
+                        <div class="h-full bg-cyan w-[65%] shadow-[0_0_5px_#00E5FF]"></div>
                     </div>
                 </div>
             </div>
         </aside>
 
+        <!-- Main Content -->
         <div class="lg:col-span-2 space-y-12">
-            <section class="relative">
+            <section id="profile">
                 <h2 class="text-3xl font-display text-white mb-6 flex items-center gap-3">
-                    <span class="w-2 h-8 bg-cyan"></span>
-                    <span data-lang-es="PERFIL PROFESIONAL" data-lang-en="PROFESSIONAL PROFILE">PERFIL PROFESIONAL</span>
+                    <span class="w-1.5 h-8 bg-cyan"></span>
+                    <span data-es="PERFIL PROFESIONAL" data-en="PROFESSIONAL PROFILE">PERFIL PROFESIONAL</span>
                 </h2>
-                <p class="text-gray-300 text-lg leading-relaxed font-light" data-lang-es="Profesional con más de 20 años de experiencia en aire acondicionado, refrigeración y montaje de tuberías industriales. Especialista en instalación, mantenimiento y supervisión de sistemas HVAC comerciales, industriales y residenciales. Orientado a la seguridad, eficiencia energética y calidad técnica, con más de 36 certificaciones en los EE. UU. Actualmente en proceso de traslado a España, aportando alto compromiso y capacidad de liderazgo técnico." data-lang-en="Professional with over 20 years of experience in air conditioning, refrigeration, and industrial pipe assembly. Specialist in installation, maintenance, and supervision of commercial, industrial, and residential HVAC systems. Oriented towards safety, energy efficiency, and technical quality, with more than 36 certifications in the USA. Currently in the process of relocating to Spain, bringing high commitment and technical leadership capability.">
-                    Profesional con más de 20 años de experiencia en aire acondicionado, refrigeración y montaje de tuberías industriales. Especialista en instalación, mantenimiento y supervisión de sistemas HVAC comerciales, industriales y residenciales. Orientado a la seguridad, eficiencia energética y calidad técnica, con más de 36 certificaciones en los EE. UU. Actualmente en proceso de traslado a España, aportando alto compromiso y capacidad de liderazgo técnico.
-                </p>
+                <div class="text-gray-300 text-lg leading-relaxed font-light space-y-4">
+                    <p data-es="Profesional con más de 20 años de experiencia en climatización, refrigeración y montaje de tuberías industriales."
+                        data-en="Professional with over 20 years of experience in air conditioning, refrigeration, and industrial pipe assembly.">
+                        Profesional con más de 20 años de experiencia en climatización, refrigeración y montaje de
+                        tuberías industriales.</p>
+                    <p data-es="Especialista en instalación, mantenimiento y supervisión de sistemas HVAC comerciales, industriales y residenciales."
+                        data-en="Specialist in installation, maintenance, and supervision of commercial, industrial, and residential HVAC systems.">
+                        Especialista en instalación, mantenimiento y supervisión de sistemas HVAC comerciales,
+                        industriales y residenciales.</p>
+                    <p data-es="Orientado a la seguridad, eficiencia energética y calidad técnica, con más de 36 certificaciones en (EE. UU.)"
+                        data-en="Safety and energy efficiency oriented with over 36 technical certifications in the USA.">
+                        Orientado a la seguridad, eficiencia energética y calidad técnica, con más de 36 certificaciones
+                        en (EE. UU.)</p>
+                    <p data-es="En proceso de traslado a España, con alto compromiso y capacidad de liderazgo técnico."
+                        data-en="Currently in the process of relocating to Spain, bringing high commitment and technical leadership skills.">
+                        En proceso de traslado a España, con alto compromiso y capacidad de liderazgo técnico.</p>
+                </div>
             </section>
 
-            <section class="relative" id="experience">
-                <div class="flex items-center justify-between mb-8">
-                    <h2 class="text-3xl font-display text-white flex items-center gap-3">
-                        <span class="w-2 h-8 bg-cyan"></span>
-                        <span data-lang-es="HISTORIAL DE DESPLIEGUE" data-lang-en="DEPLOYMENT HISTORY">HISTORIAL DE DESPLIEGUE</span>
-                    </h2>
-                    <span class="material-symbols-outlined text-gray-600 text-3xl">history</span>
-                </div>
-                <!-- Technical Lead Image used as background element -->
-                <div class="absolute right-0 top-0 w-1/3 h-full opacity-10 pointer-events-none">
-                    <img src="./ronny_tech.png" class="w-full h-full object-cover grayscale" style="mask-image: linear-gradient(to left, black, transparent);"/>
-                </div>
-                <div class="space-y-6 relative">
-                    <div class="absolute left-0 top-2 bottom-0 w-px bg-gradient-to-b from-cyan via-gray-800 to-transparent"></div>
-                    
-                    <article class="relative pl-8 group">
-                        <div class="absolute left-[-5px] top-2 w-[11px] h-[11px] rounded-full bg-black border-2 border-cyan group-hover:bg-cyan transition-colors shadow-[0_0_10px_#00E5FF]"></div>
-                        <div class="glass-panel p-6 card-hover border-l-0 transition-all duration-300">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                                <div>
-                                    <h4 class="text-xl font-bold text-white group-hover:text-cyan transition-colors" data-lang-es="Capataz de Montaje | Div. de Tuberías Industriales" data-lang-en="Assembly Foreman | Industrial Piping Div.">Capataz de Montaje | Div. de Tuberías Industriales</h4>
-                                    <p class="text-sm text-gray-400 font-mono mt-1">B&I Contractors, Inc. – Florida, USA</p>
-                                </div>
-                                <span class="inline-block px-3 py-1 mt-2 md:mt-0 bg-cyan/10 text-cyan text-xs font-bold rounded border border-cyan/20" data-lang-es="ACTUAL" data-lang-en="CURRENT">ACTUAL</span>
-                            </div>
-                        </div>
-                    </article>
+            <section id="experience">
+                <h2 class="text-3xl font-display text-white mb-8 flex items-center gap-3">
+                    <span class="w-1.5 h-8 bg-cyan"></span>
+                    <span data-es="EXPERIENCIA PROFESIONAL" data-en="PROFESSIONAL EXPERIENCE">EXPERIENCIA
+                        PROFESIONAL</span>
+                </h2>
+                <div class="space-y-8 relative pl-4">
+                    <div class="absolute left-0 top-0 bottom-0 w-px bg-gray-800"></div>
 
-                    <article class="relative pl-8 group">
-                        <div class="absolute left-[-5px] top-2 w-[11px] h-[11px] rounded-full bg-black border-2 border-gray-600 group-hover:border-cyan transition-colors"></div>
-                        <div class="bg-surface border border-white/5 p-6 hover:bg-white/5 transition-colors rounded-r-lg">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                                <div>
-                                    <h4 class="text-lg font-bold text-white" data-lang-es="Asistente de Fabricación / Soldador Industrial" data-lang-en="Fabrication Assistant / Industrial Welder">Asistente de Fabricación / Soldador Industrial</h4>
-                                    <p class="text-sm text-gray-400 font-mono mt-1">Madden Bolt Corporation – Texas, USA</p>
-                                </div>
-                                <span class="text-gray-500 text-xs font-mono mt-2 md:mt-0">2023 – 2024</span>
-                            </div>
+                    <div class="relative pl-6">
+                        <div
+                            class="absolute left-[-4.5px] top-2 w-[9px] h-[9px] rounded-full bg-cyan shadow-[0_0_8px_#00E5FF]">
                         </div>
-                    </article>
+                        <h4 class="text-xl font-bold text-white uppercase">B&I Contractors, Inc. – Florida, EE. UU.</h4>
+                        <p class="text-cyan text-sm font-bold uppercase"
+                            data-es="Encargado de Montaje | División de Tuberías Industriales"
+                            data-en="Assembly Foreman | Industrial Piping Division">Encargado de Montaje | División de
+                            Tuberías Industriales</p>
+                        <p class="text-xs text-gray-500 italic mt-1">(Pipefitting Foreman)</p>
+                    </div>
 
-                    <article class="relative pl-8 group">
-                        <div class="absolute left-[-5px] top-2 w-[11px] h-[11px] rounded-full bg-black border-2 border-gray-600 group-hover:border-cyan transition-colors"></div>
-                        <div class="bg-surface border border-white/5 p-6 hover:bg-white/5 transition-colors rounded-r-lg">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                                <div>
-                                    <h4 class="text-lg font-bold text-white" data-lang-es="Supervisor de HVAC y Refrigeración" data-lang-en="HVAC & Refrigeration Supervisor">Supervisor de HVAC y Refrigeración</h4>
-                                    <p class="text-sm text-gray-400 font-mono mt-1">Comelec – Cuba</p>
-                                </div>
-                                <span class="text-gray-500 text-xs font-mono mt-2 md:mt-0">2008 – 2023</span>
-                            </div>
-                        </div>
-                    </article>
+                    <div class="relative pl-6">
+                        <div class="absolute left-[-4.5px] top-2 w-[9px] h-[9px] rounded-full bg-gray-700"></div>
+                        <h4 class="text-lg font-bold text-white uppercase">Madden Bolt Corporation – Texas, EE. UU.</h4>
+                        <p class="text-gray-400 text-sm" data-es="Asistente de Fabricación / Soldador Industrial"
+                            data-en="Fabrication Assistant / Industrial Welder">Asistente de Fabricación / Soldador
+                            Industrial</p>
+                        <p class="text-xs text-cyan opacity-80 mt-1">2023 – 2024</p>
+                    </div>
+
+                    <div class="relative pl-6">
+                        <div class="absolute left-[-4.5px] top-2 w-[9px] h-[9px] rounded-full bg-gray-700"></div>
+                        <h4 class="text-lg font-bold text-white uppercase">Comelec – Cuba</h4>
+                        <p class="text-gray-400 text-sm" data-es="Supervisor Principal de HVAC y Refrigeración"
+                            data-en="Principal HVAC & Refrigeration Supervisor">Supervisor Principal de HVAC y
+                            Refrigeración</p>
+                        <p class="text-xs text-cyan opacity-80 mt-1">2008 – 2023</p>
+                    </div>
+
+                    <div class="relative pl-6">
+                        <div class="absolute left-[-4.5px] top-2 w-[9px] h-[9px] rounded-full bg-gray-700"></div>
+                        <h4 class="text-lg font-bold text-white uppercase"
+                            data-es="La Gran Fábrica de Embutidos El Miño" data-en="El Miño Food Factory">La Gran
+                            Fábrica de Embutidos El Miño</h4>
+                        <p class="text-gray-400 text-sm" data-es="Mecánico Industrial Sector Refrigeración"
+                            data-en="Industrial Mechanic - Refrigeration Sector">Mecánico Industrial Sector
+                            Refrigeración</p>
+                        <p class="text-xs text-cyan opacity-80 mt-1">2006 – 2008</p>
+                    </div>
                 </div>
             </section>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <section>
                     <h2 class="text-2xl font-display text-white mb-6 flex items-center gap-3">
-                        <span class="w-1 h-6 bg-cyan"></span>
-                        <span data-lang-es="EDUCACIÓN" data-lang-en="EDUCATION">EDUCACIÓN</span>
+                        <span class="w-1.5 h-6 bg-cyan"></span>
+                        <span data-es="FORMACIÓN" data-en="EDUCATION">FORMACIÓN</span>
                     </h2>
-                    <div class="space-y-4">
-                        <div class="bg-surface p-5 border-l-2 border-cyan/50 hover:border-cyan transition-colors">
-                            <div class="flex justify-between items-start">
-                                <h4 class="text-white font-bold">Excellent Trade Training School</h4>
-                                <span class="text-xs text-cyan border border-cyan/30 px-1 rounded">2023</span>
-                            </div>
-                            <p class="text-xs text-gray-500 mb-2">USA</p>
-                            <p class="text-sm text-gray-300" data-lang-es="Certificación HVAC & EPA 608 Universal" data-lang-en="HVAC Certification & EPA 608 Universal">Certificación HVAC & EPA 608 Universal</p>
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-surface p-4 border-l border-cyan hover:bg-white/5 transition-colors">
+                            <strong class="block text-white">Excellent Trade Training School – USA</strong>
+                            <p class="text-gray-400" data-es="Certificación HVAC & EPA 608 Universal (2023)"
+                                data-en="HVAC & EPA 608 Universal Certification (2023)">Certificación HVAC & EPA 608
+                                Universal (2023)</p>
                         </div>
-                        <div class="bg-surface p-5 border-l-2 border-gray-700 hover:border-cyan/50 transition-colors">
-                            <div class="flex justify-between items-start">
-                                <h4 class="text-white font-bold">Instituto de Educación Gómez</h4>
-                                <span class="text-xs text-gray-500 border border-gray-700 px-1 rounded">98-02</span>
-                            </div>
-                            <p class="text-xs text-gray-500 mb-2">Cuba</p>
-                            <p class="text-sm text-gray-300" data-lang-es="Técnico Medio en Refrigeración y Clima" data-lang-en="Technical Degree in Refrig. & AC">Técnico Medio en Refrigeración y Clima</p>
+                        <div class="bg-surface p-4 border-l border-white/10 hover:border-cyan transition-colors">
+                            <strong class="block text-white">Inst. Ed. Gómez – Cuba</strong>
+                            <p class="text-gray-400" data-es="Título Técnico Medio en Refrigeración y Clima (1998-2002)"
+                                data-en="Technical Degree in Refrig & Climate (1998-2002)">Título Técnico Medio en
+                                Refrigeración y Clima (1998-2002)</p>
+                            <p class="text-[10px] text-cyan opacity-60 mt-2 italic"
+                                data-es="Validado por SDR Educational Consultants, Houston (2023)"
+                                data-en="Validated by SDR Educational Consultants, Houston (2023)">Validado por SDR
+                                Educational Consultants, Houston (2023)</p>
                         </div>
                     </div>
                 </section>
+
                 <section>
                     <h2 class="text-2xl font-display text-white mb-6 flex items-center gap-3">
-                        <span class="w-1 h-6 bg-cyan"></span>
-                        <span data-lang-es="CERTIFICACIONES" data-lang-en="CERTIFICATIONS">CERTIFICACIONES</span>
+                        <span class="w-1.5 h-6 bg-cyan"></span>
+                        <span data-es="CERTIFICACIONES" data-en="CERTIFICATIONS">CERTIFICACIONES</span>
                     </h2>
-                    <div class="bg-surface/50 border border-white/5 rounded-lg overflow-hidden">
-                        <div class="divide-y divide-white/5">
-                            <div class="p-3 flex items-start gap-3 hover:bg-white/5 transition-colors">
-                                <span class="material-symbols-outlined text-cyan text-sm mt-1">verified</span>
-                                <div>
-                                    <strong class="block text-sm text-white">EPA Universal Certification</strong>
-                                    <span class="text-xs text-gray-500">ACCA (2024)</span>
-                                </div>
-                            </div>
-                            <div class="p-3 flex items-start gap-3 bg-cyan/5 hover:bg-cyan/10 transition-colors">
-                                <span class="material-symbols-outlined text-cyan text-sm mt-1">workspace_premium</span>
-                                <div>
-                                    <strong class="block text-sm text-white" data-lang-es="36+ Certificaciones Técnicas" data-lang-en="36+ Technical Certifications">36+ Certificaciones Técnicas</strong>
-                                    <span class="text-xs text-gray-500">OSHA, HVAC, Pipefitting</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ul class="space-y-2 text-xs text-gray-400 uppercase tracking-tighter">
+                        <li class="flex items-start gap-2"><span class="text-cyan">»</span> <span>EPA Universal
+                                Certification - ACCA (2024)</span></li>
+                        <li class="flex items-start gap-2"><span class="text-cyan">»</span> <span>VAC & EPA Program
+                                Completion (2023)</span></li>
+                        <li class="flex items-start gap-2"><span class="text-cyan">»</span> <span
+                                data-es="Buenas Prácticas CITMA/ONU (Cuba, 2016)"
+                                data-en="Best Practices CITMA/UN (Cuba, 2016)">Buenas Prácticas CITMA/ONU (Cuba,
+                                2016)</span></li>
+                        <li class="flex items-start gap-2"><span class="text-cyan">»</span> <span
+                                data-es="Mecánico Industrial - Min. Educación (Cuba)"
+                                data-en="Industrial Mechanic - Education Ministry (Cuba)">Mecánico Industrial - Min.
+                                Educación (Cuba)</span></li>
+                        <li class="flex items-start gap-2 bg-cyan/5 p-2 rounded border border-cyan/20"><span
+                                class="text-cyan">»</span> <strong class="text-white"
+                                data-es="36 CERTIFICACIONES TÉCNICAS (OSHA, HVAC, Pipefitting)"
+                                data-en="36 TECHNICAL CERTIFICATIONS (OSHA, HVAC, Pipefitting)">36 CERTIFICACIONES
+                                TÉCNICAS (OSHA, HVAC, Pipefitting)</strong></li>
+                    </ul>
                 </section>
             </div>
         </div>
     </main>
 
-    <footer class="border-t border-white/10 bg-black py-12 relative z-20" id="contact">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Ronny Valdes</h2>
-                <p class="text-gray-500 text-sm" data-lang-es="Portfolio de Técnico Industrial HVAC" data-lang-en="Industrial HVAC Technician Portfolio">Portfolio de Técnico Industrial HVAC</p>
+    <footer class="border-t border-white/10 bg-black py-10 relative z-20">
+        <div
+            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 font-mono">
+            <div data-es="© 2026 RONNY VALDES - TODOS LOS DERECHOS RESERVADOS"
+                data-en="© 2026 RONNY VALDES - ALL RIGHTS RESERVED">© 2026 RONNY VALDES - TODOS LOS DERECHOS RESERVADOS
             </div>
-            <div class="flex gap-4">
-                <a class="w-10 h-10 rounded-full bg-surface border border-white/10 flex items-center justify-center text-cyan hover:bg-cyan hover:text-black transition-all hover:scale-110 shadow-[0_0_15px_rgba(0,229,255,0.2)]" href="mailto:ronnyany83@gmail.com">
-                    <span class="material-symbols-outlined text-sm">mail</span>
-                </a>
-                <a class="w-10 h-10 rounded-full bg-surface border border-white/10 flex items-center justify-center text-cyan hover:bg-cyan hover:text-black transition-all hover:scale-110 shadow-[0_0_15px_rgba(0,229,255,0.2)]" href="tel:+13465462415">
-                    <span class="material-symbols-outlined text-sm">call</span>
-                </a>
-            </div>
-            <div class="text-gray-600 text-xs font-mono">
-                © 2026 VALDES.TECH. ALL RIGHTS RESERVED.
+            <div class="mt-4 md:mt-0 flex gap-4">
+                <a href="mailto:ronnyany83@gmail.com" class="hover:text-cyan">EMAIL</a>
+                <span>|</span>
+                <a href="tel:+13465462415" class="hover:text-cyan">CELL: +1 346 546 2415</a>
             </div>
         </div>
     </footer>
 
     <script>
-        function updateLanguage() {
-            const userLang = navigator.language || navigator.userLanguage;
-            const lang = userLang.startsWith('es') ? 'es' : 'en';
-            
-            document.querySelectorAll('[data-lang-' + lang + ']').forEach(el => {
-                el.innerText = el.getAttribute('data-lang-' + lang);
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.innerText = el.getAttribute('data-' + lang);
             });
 
-            // Update title
-            const titles = {
-                'es': 'Ronny Valdes Montes de Oca - Portfolio Profesional',
-                'en': 'Ronny Valdes - Professional HVAC Portfolio'
-            };
-            document.getElementById('page-title').innerText = titles[lang];
+            // Buttons toggle
+            document.getElementById('btn-es').className = lang === 'es' ? 'px-3 py-1 text-xs font-bold transition-colors bg-cyan text-black' : 'px-3 py-1 text-xs font-bold transition-colors text-white hover:bg-white/5';
+            document.getElementById('btn-en').className = lang === 'en' ? 'px-3 py-1 text-xs font-bold transition-colors bg-cyan text-black' : 'px-3 py-1 text-xs font-bold transition-colors text-white hover:bg-white/5';
+
+            localStorage.setItem('preferred-lang', lang);
             document.documentElement.lang = lang;
         }
 
-        window.onload = updateLanguage;
+        window.onload = () => {
+            const savedLang = localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'es');
+            setLanguage(savedLang);
+        };
     </script>
 </body>
+
 </html>
