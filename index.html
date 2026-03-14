@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="es">
+<html class="dark scroll-smooth" lang="es">
 
 <head>
     <meta charset="utf-8" />
@@ -104,31 +104,46 @@
 <body class="bg-black text-text-main font-sans antialiased selection:bg-cyan selection:text-black overflow-x-hidden">
     <div class="vignette"></div>
 
-    <nav class="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <!-- Progress Bar -->
+        <div class="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-cyan to-blue-600 w-0 transition-all duration-100" id="scroll-progress"></div>
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-20">
             <div class="flex items-center gap-3">
                 <img src="./logo.png" alt="Valdes Tech Logo"
                     class="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(0,229,255,0.6)] animate-pulse">
                 <span class="font-display font-bold text-xl tracking-widest text-white uppercase">Ronny<span
                         class="text-cyan">Valdes</span></span>
             </div>
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-5">
                 <!-- Manual Language Selector -->
-                <div class="flex bg-surface border border-white/10 rounded overflow-hidden">
+                <div class="flex bg-surface border border-white/10 rounded overflow-hidden relative z-50">
                     <button onclick="setLanguage('es')" id="btn-es"
                         class="px-3 py-1 text-xs font-bold transition-colors bg-cyan text-black">ES</button>
                     <button onclick="setLanguage('en')" id="btn-en"
                         class="px-3 py-1 text-xs font-bold transition-colors text-white hover:bg-white/5">EN</button>
                 </div>
-                <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
-                    <a class="text-gray-400 hover:text-cyan transition-colors" href="#profile" data-es="PERFIL"
-                        data-en="PROFILE">PERFIL</a>
-                    <a class="text-gray-400 hover:text-cyan transition-colors" href="#experience" data-es="EXPERIENCIA"
-                        data-en="EXPERIENCE">EXPERIENCIA</a>
-                    <a class="text-gray-400 hover:text-cyan transition-colors" href="#skills" data-es="COMPETENCIAS"
-                        data-en="COMPETENCIES">COMPETENCIAS</a>
+                
+                <!-- Desktop Links -->
+                <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide ml-2">
+                    <a class="text-gray-400 hover:text-cyan transition-colors nav-link" href="#profile" data-es="PERFIL" data-en="PROFILE">PERFIL</a>
+                    <a class="text-gray-400 hover:text-cyan transition-colors nav-link" href="#experience" data-es="EXPERIENCIA" data-en="EXPERIENCE">EXPERIENCIA</a>
+                    <a class="text-gray-400 hover:text-cyan transition-colors nav-link" href="#skills" data-es="COMPETENCIAS" data-en="COMPETENCIES">COMPETENCIAS</a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-cyan transition-colors focus:outline-none ml-2 relative z-50">
+                    <span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+                </button>
             </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="fixed inset-0 top-0 bg-black/95 backdrop-blur-3xl z-40 transform -translate-y-full transition-transform duration-500 ease-in-out md:hidden flex flex-col items-center justify-center gap-8 border-b border-cyan/20 h-screen">
+            <a class="text-2xl font-display text-white hover:text-cyan transition-colors uppercase tracking-widest nav-link-mobile" href="#profile" data-es="PERFIL" data-en="PROFILE">PERFIL</a>
+            <a class="text-2xl font-display text-white hover:text-cyan transition-colors uppercase tracking-widest nav-link-mobile" href="#experience" data-es="EXPERIENCIA" data-en="EXPERIENCE">EXPERIENCIA</a>
+            <a class="text-2xl font-display text-white hover:text-cyan transition-colors uppercase tracking-widest nav-link-mobile" href="#skills" data-es="COMPETENCIAS" data-en="COMPETENCIES">COMPETENCIAS</a>
+            <div class="h-px w-24 bg-cyan/30 my-4"></div>
+            <a class="text-xl font-display text-cyan hover:text-white transition-colors uppercase tracking-widest nav-link-mobile" href="#credentials" data-es="CREDENCIALES" data-en="CREDENTIALS">CREDENCIALES</a>
         </div>
     </nav>
 
@@ -502,6 +517,47 @@
             const savedLang = localStorage.getItem('preferred-lang') || (navigator.language.startsWith('en') ? 'en' : 'es');
             setLanguage(savedLang);
         };
+
+        // Mobile Menu Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.nav-link-mobile');
+
+        function toggleMenu() {
+            const isClosed = mobileMenu.classList.contains('-translate-y-full');
+            if(isClosed) {
+                mobileMenu.classList.remove('-translate-y-full');
+                menuIcon.innerText = 'close';
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('-translate-y-full');
+                menuIcon.innerText = 'menu';
+                document.body.style.overflow = '';
+            }
+        }
+        
+        mobileBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Scroll Progress & Navbar styling
+        const progressBar = document.getElementById('scroll-progress');
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = progress + '%';
+            
+            if(scrollTop > 50) {
+                navbar.classList.add('bg-black/95', 'shadow-[0_4px_30px_rgba(0,0,0,0.5)]');
+                navbar.classList.remove('bg-black/80');
+            } else {
+                navbar.classList.remove('bg-black/95', 'shadow-[0_4px_30px_rgba(0,0,0,0.5)]');
+                navbar.classList.add('bg-black/80');
+            }
+        });
     </script>
 </body>
 
