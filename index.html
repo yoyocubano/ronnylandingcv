@@ -101,8 +101,12 @@
     </style>
 </head>
 
-<body class="bg-black text-text-main font-sans antialiased selection:bg-cyan selection:text-black overflow-x-hidden">
-    <div class="vignette"></div>
+<body class="bg-black text-text-main font-sans antialiased selection:bg-cyan selection:text-black overflow-x-hidden relative">
+    
+    <!-- Interactive 3D Background effect (Spline-like) -->
+    <div id="vanta-bg" class="fixed inset-0 z-[-5] opacity-60"></div>
+
+    <div class="vignette pointer-events-none"></div>
 
     <nav id="navbar" class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <!-- Progress Bar -->
@@ -534,6 +538,30 @@
                 navbar.classList.remove('bg-black/95', 'shadow-[0_4px_30px_rgba(0,0,0,0.5)]');
                 navbar.classList.add('bg-black/80');
             }
+        });
+    </script>
+
+    <!-- 3D Interactive Background Scripts (Vanta & Three.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            VANTA.NET({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x00e5ff,
+                backgroundColor: 0x000000,
+                points: 10.00,
+                maxDistance: 20.00,
+                spacing: 18.00,
+                showDots: true
+            });
         });
     </script>
 </body>
